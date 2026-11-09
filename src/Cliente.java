@@ -51,14 +51,14 @@ public class Cliente {
 
     private void validaEmail(String email){
         validaString(email, "O email");
-        if (!(email.matches("[A-Za-z0-9._-]+(\\.[A-Za-z0-9-]+)"))){
+        if (!(email.strip().matches("[A-Za-z0-9]+([._-][A-Za-z0-9]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)+"))){
             throw new IllegalArgumentException("O email é invalido.");
         }
     }
 
     private void validaTelefone(String telefone){
         validaString(telefone, "O numero para contato");
-        if (telefone.strip().length() != 11){
+        if (!(telefone.strip().matches("[0-9]{11}"))){
             throw new IllegalArgumentException("O numero para contato deve ter 11 dígitos.");
         }
     }
