@@ -1,3 +1,5 @@
+package model;
+
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -28,12 +30,12 @@ public class Produto {
     }
 
 
-    public UUID getId(){return id; }
-    public String getNome(){return nome; }
-    public String getDescricao(){return descricao; }
-    public BigDecimal getPreco(){return preco; }
-    public int getQuantidadeEstoque(){return quantidadeEstoque; }
-    public boolean isAtivo(){return ativo; }
+    public UUID getId(){ return id; }
+    public String getNome(){ return nome; }
+    public String getDescricao(){ return descricao; }
+    public BigDecimal getPreco(){ return preco; }
+    public int getQuantidadeEstoque(){ return quantidadeEstoque; }
+    public boolean isAtivo(){ return ativo; }
 
 
     public void setNome(String nome){
@@ -43,7 +45,7 @@ public class Produto {
 
     public void setDescricao(String descricao){
         validaString(descricao, "Descrição");
-        this.descricao =descricao.strip();
+        this.descricao = descricao.strip();
     }
 
     public void setPreco(BigDecimal preco){
@@ -88,6 +90,4 @@ public class Produto {
             throw new IllegalArgumentException("A quantidade em estoque não pode ser negativo.");
         }
     }
-
-
 }

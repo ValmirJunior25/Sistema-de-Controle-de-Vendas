@@ -1,3 +1,5 @@
+package model;
+
 import java.util.UUID;
 
 public class Cliente {
@@ -17,12 +19,10 @@ public class Cliente {
         this.telefone = telefone.strip();
     }
 
-
-    public UUID getId(){return id; }
-    public String getNome(){return nome; }
-    public String getEmail() {return email; }
-    public String getTelefone(){return telefone; }
-
+    public UUID getId(){ return id; }
+    public String getNome(){ return nome; }
+    public String getEmail(){ return email; }
+    public String getTelefone(){ return telefone; }
 
     public void setNome(String nome){
         validaString(nome, "O nome");
@@ -38,7 +38,6 @@ public class Cliente {
         validaTelefone(telefone);
         this.telefone = telefone.strip();
     }
-
 
     private void validaString(String valor, String nomeValor){
         if (valor == null){
@@ -62,5 +61,4 @@ public class Cliente {
             throw new IllegalArgumentException("O numero para contato deve ter 11 dígitos.");
         }
     }
-
 }
