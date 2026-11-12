@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Cliente {
@@ -15,7 +16,7 @@ public class Cliente {
 
         this.id = UUID.randomUUID();
         this.nome = nome.strip();
-        this.email = email.strip();
+        this.email = email.strip().toLowerCase();
         this.telefone = telefone.strip();
     }
 
@@ -31,7 +32,7 @@ public class Cliente {
 
     public void setEmail(String email){
         validaEmail(email);
-        this.email = email.strip();
+        this.email = email.strip().toLowerCase();
     }
 
     public void setTelefone(String telefone){
@@ -57,8 +58,23 @@ public class Cliente {
 
     private void validaTelefone(String telefone){
         validaString(telefone, "O numero para contato");
-        if (!(telefone.strip().matches("[0-9]{11}"))){
+        if ( !(telefone.strip().matches("[0-9]{11}"))){
             throw new IllegalArgumentException("O numero para contato deve ter 11 dígitos.");
         }
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        Cliente outro = (Cliente) obj;
+        return Objects.equals(this.id, outro.id);
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hashCode(this.id);
     }
 }
